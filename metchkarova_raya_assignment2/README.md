@@ -14,9 +14,9 @@ Three models are trained and compared on a stratified 90/10 hold-out validation 
 
 | Model | Description | Validation accuracy |
 |---|---|---|
-| MLP (baseline) | Flatten → 256 → 128 → 10, ReLU | 0.9793 |
+| MLP (baseline) | Flatten → 256 → 128 → 10, ReLU | 0.9786 |
 | CNN | 2 conv blocks (Conv → ReLU → MaxPool) + 2 linear layers | 0.9898 |
-| Improved CNN | 2 conv blocks with BatchNorm + Dropout, data augmentation (RandomAffine), CosineAnnealingLR, label smoothing | **0.9964** |
+| Improved CNN | 2 conv blocks with BatchNorm + Dropout, data augmentation (RandomAffine), CosineAnnealingLR, label smoothing | **0.9962** |
 
 The improved CNN is used for the Kaggle submission.
 
@@ -70,5 +70,5 @@ external labelled digits are not used.
 
 ## Use of AI assistants
 
-Claude (Anthropic) was used to help structure (and write parts of) the README.md . It was use and for the checking of the code. If the results are good or not. (his suggestents were: )
+Claude (Anthropic) was used to help structure (and write parts of) the README.md and .DS_store and its structure. It was use and for the checking of the code. If the results are good or not. (his suggestents were: )
 VS code native ai may be used. (im not sure)
