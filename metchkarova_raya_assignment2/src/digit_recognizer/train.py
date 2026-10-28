@@ -65,6 +65,9 @@ def fit(
 ):
     """Train with Adam, validate after each epoch and keep the weights with the best validation accuracy.
 
+    val_loader=None trains without validation (e.g. the final models on all labelled data):
+    no checkpoint selection is possible then, so the weights after the last epoch are kept.
+
     scheduler: None (constant learning rate), 'cosine' (CosineAnnealingLR, stepped every epoch)
                or 'onecycle' (OneCycleLR: warm-up then decay, stepped every batch).
     Returns a history dict with train/val loss and accuracy per epoch.
@@ -95,14 +98,17 @@ def fit(
         )
         if epoch_sched is not None:
             epoch_sched.step()
-        va_loss, va_acc = evaluate(model, val_loader, val_criterion, device)
+        if val_loader is not None:
+            va_loss, va_acc = evaluate(model, val_loader, val_criterion, device)
+        else:
+            va_loss, va_acc = float("nan"), float("nan")
 
         history["train_loss"].append(tr_loss)
         history["train_acc"].append(tr_acc)
         history["val_loss"].append(va_loss)
         history["val_acc"].append(va_acc)
 
-        if va_acc > best_acc:
+        if val_loader is not None and va_acc > best_acc:
             best_acc, best_epoch = va_acc, epoch
             best_state = copy.deepcopy(model.state_dict())
 
@@ -112,9 +118,12 @@ def fit(
                 f"val_loss={va_loss:.4f} val_acc={va_acc:.4f} ({time.time() - start:.0f}s)"
             )
 
-    model.load_state_dict(best_state)
+    if best_state is None:  # no validation: keep the final weights
+        best_acc, best_epoch = float("nan"), epochs
+    else:
+        model.load_state_dict(best_state)
     history["best_val_acc"] = best_acc
     history["best_epoch"] = best_epoch
-    if verbose:
+    if verbose and val_loader is not None:
         print(f"Best validation accuracy {best_acc:.4f} at epoch {best_epoch}")
     return history

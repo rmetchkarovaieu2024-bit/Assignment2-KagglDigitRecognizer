@@ -12,7 +12,13 @@ from .data import (
 )
 from .models import MLP, ImprovedCNN, SimpleCNN, build_model
 from .plots import plot_confusion_matrix, plot_history, plot_misclassified, plot_samples
-from .predict import check_submission, make_submission, predict_labels, predict_logits
+from .predict import (
+    check_submission,
+    make_submission,
+    predict_ensemble,
+    predict_labels,
+    predict_logits,
+)
 from .train import evaluate, fit, train_one_epoch
 from .utils import count_parameters, get_device, set_seed
 
@@ -37,6 +43,7 @@ __all__ = [
     "plot_samples",
     "check_submission",
     "make_submission",
+    "predict_ensemble",
     "predict_labels",
     "predict_logits",
     "evaluate",

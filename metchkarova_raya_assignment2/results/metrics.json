@@ -56,5 +56,17 @@
       "pred": 1,
       "count": 1
     }
-  ]
+  ],
+  "ensemble": {
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "epochs": 15,
+    "val_acc_90pct_models": 0.9971428571428571,
+    "final_models_trained_on": 42000
+  }
 }

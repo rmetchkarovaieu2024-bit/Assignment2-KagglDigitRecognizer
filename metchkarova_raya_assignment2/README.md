@@ -70,5 +70,14 @@ external labelled digits are not used.
 
 ## Use of AI assistants
 
-Claude (Anthropic) was used to help structure (and write parts of) the README.md and .DS_store and its structure. It was use and for the checking of the code. If the results are good or not. (his suggestents were: )
+Claude (Anthropic) was used to help structure (and write parts of) the README.md and .DS_store and its structure. It was use and for the checking of the code. If the results are good or not. (his suggestents were: train.py: 
+    fit can also train without a validation set, which is needed for the “all 42,000 images” models.
+    predict.py: a new predict_ensemble function that averages the 5 models’ probabilities. It’s also exported in __init__.py. - @torch.no_grad() is the new
+    tests/: one new test for the ensemble and the no-validation training.
+    Notebook: a new section “10. Ensemble” added at the end. Your existing cells and text stay untouched.
+    The ensemble writes results/submission_ensemble.csv, a separate file, so your current submission.csv (0.99539) stays safe.
+) The submision on Kaggle is based solly on my work without the improvemnt 
 VS code native ai may be used. (im not sure)
+
+
+submission_ensemble.csv - 0.99567 score in kaggle with username rayametchkarova2

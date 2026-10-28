@@ -18,6 +18,20 @@ def predict_logits(model, loader, device) -> torch.Tensor:
     return torch.cat(outputs)
 
 
+@torch.no_grad()
+def predict_ensemble(models, loader, device) -> np.ndarray:
+    """Ensemble prediction: average the softmax probabilities of several models, then take the argmax.
+
+    Each model makes slightly different mistakes, so averaging their probabilities
+    ("soft voting") usually corrects some of the errors of any single model.
+    """
+    total = None
+    for model in models:
+        probs = torch.softmax(predict_logits(model, loader, device), dim=1)
+        total = probs if total is None else total + probs
+    return (total / len(models)).argmax(dim=1).numpy()
+
+
 def predict_labels(model, loader, device) -> np.ndarray:
     """Predicted class = argmax of the logits (softmax would not change the argmax)."""
     return predict_logits(model, loader, device).argmax(dim=1).numpy()
