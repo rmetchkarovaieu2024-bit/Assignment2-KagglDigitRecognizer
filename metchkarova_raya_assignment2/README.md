@@ -71,3 +71,4 @@ external labelled digits are not used.
 ## Use of AI assistants
 
 Claude (Anthropic) was used to help structure (and write parts of) the README.md . It was use and for the checking of the code. If the results are good or not. (his suggestents were: )
+VS code native ai may be used. (im not sure)
