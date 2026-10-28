@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "digit-recognizer"
+version = "0.1.0"
+description = "MLP and CNN digit classifiers in PyTorch for the Kaggle Digit Recognizer competition"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Raya Metchkarova" }]
+dependencies = [
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "scikit-learn",
+    "torch>=2.0",
+    "torchvision>=0.15",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "jupyter", "ipykernel"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

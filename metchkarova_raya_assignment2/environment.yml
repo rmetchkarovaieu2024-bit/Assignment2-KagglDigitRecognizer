@@ -1,0 +1,15 @@
+name: digit-recognizer
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - matplotlib
+  - scikit-learn
+  - pytorch
+  - torchvision
+  - jupyter
+  - ipykernel
+  - pytest
+  - pip

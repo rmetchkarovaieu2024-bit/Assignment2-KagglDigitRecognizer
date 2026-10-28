@@ -1,0 +1,60 @@
+{
+  "seed": 42,
+  "device": "mps",
+  "n_train": 37800,
+  "n_val": 4200,
+  "mean": 0.1310214102268219,
+  "std": 0.30853232741355896,
+  "models": {
+    "MLP": {
+      "best_val_acc": 0.9785714285714285,
+      "best_epoch": 9,
+      "epochs": 10,
+      "final_train_acc": 0.9946296296296296
+    },
+    "CNN": {
+      "best_val_acc": 0.9897619047619047,
+      "best_epoch": 7,
+      "epochs": 10,
+      "final_train_acc": 0.9972486772486773
+    },
+    "Improved CNN": {
+      "best_val_acc": 0.9961904761904762,
+      "best_epoch": 15,
+      "epochs": 15,
+      "final_train_acc": 0.9928042328042328
+    }
+  },
+  "top_confusions": [
+    {
+      "true": 8,
+      "pred": 9,
+      "count": 3
+    },
+    {
+      "true": 9,
+      "pred": 8,
+      "count": 1
+    },
+    {
+      "true": 7,
+      "pred": 1,
+      "count": 1
+    },
+    {
+      "true": 5,
+      "pred": 9,
+      "count": 1
+    },
+    {
+      "true": 5,
+      "pred": 6,
+      "count": 1
+    },
+    {
+      "true": 5,
+      "pred": 1,
+      "count": 1
+    }
+  ]
+}

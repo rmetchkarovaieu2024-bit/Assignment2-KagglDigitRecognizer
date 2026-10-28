@@ -1,0 +1,4 @@
+model,parameters,epochs,best epoch,final train acc,best val acc,val errors (of 4200)
+MLP,235146,10,9,0.9946,0.9786,90
+CNN,421642,10,7,0.9972,0.9898,43
+Improved CNN,871082,15,15,0.9928,0.9962,16
